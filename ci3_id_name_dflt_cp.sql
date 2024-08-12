@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 07, 2024 at 07:16 AM
+-- Generation Time: Aug 12, 2024 at 05:02 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.1.33
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `ci3_id_name`
+-- Database: `ci3_id_name_dflt_cp`
 --
 
 -- --------------------------------------------------------
@@ -30,6 +30,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `admin_user` (
   `id` int(11) NOT NULL,
+  `company_profile_id` int(11) NOT NULL,
   `admin_user_role_id` int(11) NOT NULL,
   `designation_id` int(11) NOT NULL,
   `name` varchar(500) NOT NULL,
@@ -68,8 +69,9 @@ CREATE TABLE `admin_user` (
 -- Dumping data for table `admin_user`
 --
 
-INSERT INTO `admin_user` (`id`, `admin_user_role_id`, `designation_id`, `name`, `password`, `show_password`, `email`, `username`, `country_id`, `state_id`, `city_id`, `address1`, `address2`, `address3`, `pincode`, `mobile_no`, `alt_mobile_no`, `fax_no`, `data_view`, `approval_access`, `user_image`, `last_login`, `last_loginip`, `joining_date`, `termination_date`, `status`, `added_on`, `added_by`, `updated_on`, `updated_by`, `is_deleted`, `is_deleted_on`, `is_deleted_by`) VALUES
-(1, 1, 1, 'Krishna', '21232f297a57a5a743894a0e4a801fc3', 'admin', 'krishna@prachitours.in', 'admin', 1, 1, 8, 'Tumkuru', '', '', '560069', '9886551433', '', '', 0, 0, NULL, '2024-08-06 10:50:32', '::1', '2023-03-02', '1970-01-01', 1, '2024-08-01 00:00:00', 0, '2024-08-06 10:19:25', 1, '0', NULL, NULL);
+INSERT INTO `admin_user` (`id`, `company_profile_id`, `admin_user_role_id`, `designation_id`, `name`, `password`, `show_password`, `email`, `username`, `country_id`, `state_id`, `city_id`, `address1`, `address2`, `address3`, `pincode`, `mobile_no`, `alt_mobile_no`, `fax_no`, `data_view`, `approval_access`, `user_image`, `last_login`, `last_loginip`, `joining_date`, `termination_date`, `status`, `added_on`, `added_by`, `updated_on`, `updated_by`, `is_deleted`, `is_deleted_on`, `is_deleted_by`) VALUES
+(1, 1, 1, 1, 'Krishna', '21232f297a57a5a743894a0e4a801fc3', 'admin', 'krishna@prachitours.in', 'admin', 1, 1, 22, 'Tumkuru', '', '', '560069', '9886551433', '', '', 0, 0, NULL, '2024-08-12 18:47:55', '::1', '2023-03-02', '1970-01-01', 1, '2024-08-01 00:00:00', 0, '2024-08-12 18:36:49', 1, '0', NULL, NULL),
+(3, 1, 6, 1, 'ramkumar gurav', '6a204bd89f3c8348afd5c77c717a097a', 'asdfasdf', 'ramkumarsgurav@gmail.com', NULL, 1, 1, 838, 'chandra layout', '', '', '560060', '08549065626', '', '', 0, 0, NULL, NULL, NULL, '2024-08-12', NULL, 1, '2024-08-12 18:39:35', 1, '2024-08-12 18:48:22', 1, '0', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -117,7 +119,8 @@ CREATE TABLE `admin_user_role` (
 
 INSERT INTO `admin_user_role` (`id`, `name`, `status`, `added_on`, `added_by`, `updated_on`, `updated_by`, `is_deleted`, `is_deleted_on`, `is_deleted_by`) VALUES
 (1, 'Super User', 1, '2024-08-02 12:10:11', 1, '2024-08-05 17:56:14', 1, '0', NULL, NULL),
-(3, 'Product Manager', 1, '2024-08-06 10:40:51', 1, NULL, NULL, '0', NULL, NULL);
+(6, 'Product Manager', 1, '2024-08-09 10:35:36', 1, '2024-08-09 10:44:33', 1, '0', NULL, NULL),
+(7, 'Data Entry', 0, '2024-08-09 10:42:34', 1, '2024-08-12 18:27:02', 1, '0', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -141,6 +144,35 @@ CREATE TABLE `au_pwd_reset_token` (
   `is_deleted_by` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `au_pwd_reset_token`
+--
+
+INSERT INTO `au_pwd_reset_token` (`id`, `email`, `token`, `admin_user_id`, `used`, `status`, `added_on`, `added_by`, `updated_on`, `updated_by`, `is_deleted`, `is_deleted_on`, `is_deleted_by`) VALUES
+(1, 'krishna@prachitours.in', '9JLRJ46PKUVE', 1, 0, 1, '2024-08-09 16:02:05', NULL, NULL, NULL, '0', NULL, NULL),
+(2, 'krishna@prachitours.in', 'ZBTA6RIT6FQP', 1, 0, 1, '2024-08-09 16:06:45', NULL, NULL, NULL, '0', NULL, NULL),
+(3, 'krishna@prachitours.in', 'CG5C7H33FF9Z', 1, 0, 1, '2024-08-09 16:06:48', NULL, NULL, NULL, '0', NULL, NULL),
+(4, 'krishna@prachitours.in', 'UZPHWNM22DLH', 1, 0, 1, '2024-08-09 16:07:09', NULL, NULL, NULL, '0', NULL, NULL),
+(5, 'krishna@prachitours.in', 'MP5RLTKCF2B9', 1, 0, 1, '2024-08-09 16:07:11', NULL, NULL, NULL, '0', NULL, NULL),
+(6, 'krishna@prachitours.in', 'MIXEG9LGZW5Q', 1, 0, 1, '2024-08-09 16:07:21', NULL, NULL, NULL, '0', NULL, NULL),
+(7, 'krishna@prachitours.in', '79HSDC6B3YWC', 1, 0, 1, '2024-08-09 16:17:43', NULL, NULL, NULL, '0', NULL, NULL),
+(8, 'krishna@prachitours.in', 'TASVX2QYC61H', 1, 0, 1, '2024-08-09 16:19:20', NULL, NULL, NULL, '0', NULL, NULL),
+(9, 'krishna@prachitours.in', 'WNEHH8KBEL6B', 1, 0, 1, '2024-08-12 16:03:37', NULL, NULL, NULL, '0', NULL, NULL),
+(10, 'krishna@prachitours.in', '449E3NPNZXZ7', 1, 0, 1, '2024-08-12 16:03:42', NULL, NULL, NULL, '0', NULL, NULL),
+(11, 'krishna@prachitours.in', '35DIQM8LC5G2', 1, 0, 1, '2024-08-12 16:03:49', NULL, NULL, NULL, '0', NULL, NULL),
+(12, 'krishna@prachitours.in', '35U3QUBW8J4P', 1, 0, 1, '2024-08-12 16:05:12', NULL, NULL, NULL, '0', NULL, NULL),
+(13, 'krishna@prachitours.in', 'VT8Y686YD543', 1, 0, 1, '2024-08-12 16:06:14', NULL, NULL, NULL, '0', NULL, NULL),
+(14, 'krishna@prachitours.in', 'QDQX41GP6PGV', 1, 0, 1, '2024-08-12 16:08:06', NULL, NULL, NULL, '0', NULL, NULL),
+(15, 'krishna@prachitours.in', 'VW6V6B52YJ6K', 1, 0, 1, '2024-08-12 16:09:39', NULL, NULL, NULL, '0', NULL, NULL),
+(16, 'krishna@prachitours.in', 'DKABZPZXQ81L', 1, 0, 1, '2024-08-12 16:11:43', NULL, NULL, NULL, '0', NULL, NULL),
+(17, 'krishna@prachitours.in', 'TLJ2KWD3KU9V', 1, 0, 1, '2024-08-12 16:12:22', NULL, NULL, NULL, '0', NULL, NULL),
+(18, 'krishna@prachitours.in', '1IX9S7MLULZH', 1, 0, 1, '2024-08-12 16:21:54', NULL, NULL, NULL, '0', NULL, NULL),
+(19, 'krishna@prachitours.in', 'JWADF6CXPDWD', 1, 0, 1, '2024-08-12 16:25:17', NULL, NULL, NULL, '0', NULL, NULL),
+(20, 'krishna@prachitours.in', 'R8S2KAUSVNGP', 1, 0, 1, '2024-08-12 16:27:38', NULL, NULL, NULL, '0', NULL, NULL),
+(21, 'krishna@prachitours.in', 'A7U1ZM6LR29B', 1, 0, 1, '2024-08-12 16:28:06', NULL, NULL, NULL, '0', NULL, NULL),
+(22, 'krishna@prachitours.in', 'BIYG95JS2TH8', 1, 0, 1, '2024-08-12 16:32:14', NULL, NULL, NULL, '0', NULL, NULL),
+(23, 'krishna@prachitours.in', 'ZYRXK9JXQ4JI', 1, 1, 1, '2024-08-12 16:38:17', NULL, '2024-08-12 16:44:44', NULL, '0', NULL, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -151,7 +183,7 @@ CREATE TABLE `city` (
   `id` int(11) NOT NULL,
   `country_id` int(11) NOT NULL,
   `state_id` int(11) NOT NULL,
-  `city_name` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
   `city_code` varchar(255) DEFAULT NULL,
   `is_display` int(11) NOT NULL DEFAULT 1,
   `status` tinyint(4) NOT NULL,
@@ -168,7 +200,7 @@ CREATE TABLE `city` (
 -- Dumping data for table `city`
 --
 
-INSERT INTO `city` (`id`, `country_id`, `state_id`, `city_name`, `city_code`, `is_display`, `status`, `added_on`, `added_by`, `updated_on`, `updated_by`, `is_deleted_by`, `is_deleted`, `is_deleted_on`) VALUES
+INSERT INTO `city` (`id`, `country_id`, `state_id`, `name`, `city_code`, `is_display`, `status`, `added_on`, `added_by`, `updated_on`, `updated_by`, `is_deleted_by`, `is_deleted`, `is_deleted_on`) VALUES
 (1, 1, 1, 'Dharwad', '', 1, 1, '0000-00-00 00:00:00', 1, NULL, NULL, NULL, '0', NULL),
 (2, 1, 1, 'Hubli', '', 1, 1, '0000-00-00 00:00:00', 1, NULL, NULL, NULL, '0', NULL),
 (3, 1, 1, 'Belagavi', '', 1, 1, '0000-00-00 00:00:00', 1, NULL, NULL, NULL, '0', NULL),
@@ -728,7 +760,7 @@ INSERT INTO `city` (`id`, `country_id`, `state_id`, `city_name`, `city_code`, `i
 (557, 1, 29, 'Narayanpet', '', 1, 1, '0000-00-00 00:00:00', 1, NULL, NULL, NULL, '0', NULL),
 (558, 1, 29, 'Yellandu', '', 1, 1, '0000-00-00 00:00:00', 1, NULL, NULL, NULL, '0', NULL),
 (559, 1, 29, 'Kyathampalle', '', 1, 1, '0000-00-00 00:00:00', 1, NULL, NULL, NULL, '0', NULL);
-INSERT INTO `city` (`id`, `country_id`, `state_id`, `city_name`, `city_code`, `is_display`, `status`, `added_on`, `added_by`, `updated_on`, `updated_by`, `is_deleted_by`, `is_deleted`, `is_deleted_on`) VALUES
+INSERT INTO `city` (`id`, `country_id`, `state_id`, `name`, `city_code`, `is_display`, `status`, `added_on`, `added_by`, `updated_on`, `updated_by`, `is_deleted_by`, `is_deleted`, `is_deleted_on`) VALUES
 (560, 1, 29, 'Nagarkurnool', '', 1, 1, '0000-00-00 00:00:00', 1, NULL, NULL, NULL, '0', NULL),
 (561, 1, 30, 'Agartala', '', 1, 1, '0000-00-00 00:00:00', 1, NULL, NULL, NULL, '0', NULL),
 (562, 1, 30, 'Udaipur', '', 1, 1, '0000-00-00 00:00:00', 1, NULL, NULL, NULL, '0', NULL),
@@ -1287,7 +1319,7 @@ INSERT INTO `city` (`id`, `country_id`, `state_id`, `city_name`, `city_code`, `i
 (1115, 1, 29, 'Mancherial', '', 1, 1, '0000-00-00 00:00:00', 1, NULL, NULL, NULL, '0', NULL),
 (1116, 1, 29, 'Suryapet', '', 1, 1, '0000-00-00 00:00:00', 1, NULL, NULL, NULL, '0', NULL),
 (1117, 1, 29, 'Miryalaguda', '', 1, 1, '0000-00-00 00:00:00', 1, NULL, NULL, NULL, '0', NULL);
-INSERT INTO `city` (`id`, `country_id`, `state_id`, `city_name`, `city_code`, `is_display`, `status`, `added_on`, `added_by`, `updated_on`, `updated_by`, `is_deleted_by`, `is_deleted`, `is_deleted_on`) VALUES
+INSERT INTO `city` (`id`, `country_id`, `state_id`, `name`, `city_code`, `is_display`, `status`, `added_on`, `added_by`, `updated_on`, `updated_by`, `is_deleted_by`, `is_deleted`, `is_deleted_on`) VALUES
 (1118, 1, 29, 'Palwancha', '', 1, 1, '0000-00-00 00:00:00', 1, NULL, NULL, NULL, '0', NULL),
 (1119, 1, 29, 'Mandamarri', '', 1, 1, '0000-00-00 00:00:00', 1, NULL, NULL, NULL, '0', NULL),
 (1120, 1, 29, 'Sircilla', '', 1, 1, '0000-00-00 00:00:00', 1, NULL, NULL, NULL, '0', NULL),
@@ -1431,15 +1463,16 @@ CREATE TABLE `company_profile` (
   `updated_by` int(11) DEFAULT NULL,
   `is_deleted_by` int(11) DEFAULT NULL,
   `is_deleted` char(1) NOT NULL DEFAULT '0',
-  `is_deleted_on` datetime DEFAULT NULL
+  `is_deleted_on` datetime DEFAULT NULL,
+  `is_default` tinyint(4) NOT NULL DEFAULT 0
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `company_profile`
 --
 
-INSERT INTO `company_profile` (`id`, `company_unique_name`, `company_name`, `company_email`, `company_website`, `letterhead_header_image`, `name`, `email`, `logo`, `country_id`, `state_id`, `city_id`, `address1`, `address2`, `address3`, `pincode`, `mobile_no`, `alt_mobile_no`, `gst_no`, `user_image`, `status`, `added_on`, `added_by`, `updated_on`, `updated_by`, `is_deleted_by`, `is_deleted`, `is_deleted_on`) VALUES
-(1, 'A Travellers Mind', 'A Travelers Mind', 'info@atravelersmind.in', 'www.atravelersmind.in', 'letterhead_header_image_1.jpg', 'Krishna', 'info@atravelersmindkrishna.in', 'logo_1.jpg', 1, 1, 8, 'Tumkuru', '', '', '502101', '9666364912', '', '29AASFM3822G1ZY', NULL, 1, '2022-11-21 15:17:21', 1, '2024-08-03 17:45:21', 1, NULL, '0', NULL);
+INSERT INTO `company_profile` (`id`, `company_unique_name`, `company_name`, `company_email`, `company_website`, `letterhead_header_image`, `name`, `email`, `logo`, `country_id`, `state_id`, `city_id`, `address1`, `address2`, `address3`, `pincode`, `mobile_no`, `alt_mobile_no`, `gst_no`, `user_image`, `status`, `added_on`, `added_by`, `updated_on`, `updated_by`, `is_deleted_by`, `is_deleted`, `is_deleted_on`, `is_default`) VALUES
+(1, 'A Travellers Mind', 'A Travelers Mind', 'info@atravelersmind.in', 'www.atravelersmind.in', 'letterhead_header_image_1.jpg', 'Krishna', 'info@atravelersmindkrishna.in', 'logo_1.png', 1, 1, 16, 'Tumkuru', '', '', '502101', '9666364912', '', '29AASFM3822G1ZY', NULL, 1, '2022-11-21 15:17:21', 1, '2024-08-12 15:57:39', 1, NULL, '0', NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -1497,7 +1530,58 @@ INSERT INTO `designation` (`id`, `name`, `status`, `added_on`, `added_by`, `upda
 (1, 'Product Manager', 1, '2024-08-02 17:33:18', NULL, NULL, NULL, '0', NULL, NULL),
 (2, 'Store Manager new', 1, '2024-08-02 17:33:18', NULL, '2024-08-05 17:46:50', 1, '0', NULL, NULL),
 (4, 'Sales', 1, '2024-08-03 19:57:25', 1, '2024-08-05 17:46:38', 1, '0', NULL, NULL),
-(5, 'Store Manager', 1, '2024-08-05 18:04:22', 1, NULL, NULL, '0', NULL, NULL);
+(5, 'Store Manager', 0, '2024-08-05 18:04:22', 1, '2024-08-12 18:29:35', 1, '0', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `email_log`
+--
+
+CREATE TABLE `email_log` (
+  `id` int(11) NOT NULL,
+  `subject` text DEFAULT NULL,
+  `template` longtext DEFAULT NULL,
+  `to` varchar(255) DEFAULT NULL,
+  `response` longtext DEFAULT NULL,
+  `error_info` longtext DEFAULT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT 1,
+  `added_on` datetime DEFAULT current_timestamp(),
+  `added_by` int(11) DEFAULT NULL,
+  `updated_on` datetime DEFAULT NULL ON UPDATE current_timestamp(),
+  `updated_by` int(11) DEFAULT NULL,
+  `is_deleted` tinyint(4) NOT NULL DEFAULT 0,
+  `is_deleted_on` datetime DEFAULT NULL,
+  `is_deleted_by` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `email_log`
+--
+
+INSERT INTO `email_log` (`id`, `subject`, `template`, `to`, `response`, `error_info`, `status`, `added_on`, `added_by`, `updated_on`, `updated_by`, `is_deleted`, `is_deleted_on`, `is_deleted_by`) VALUES
+(1, 'User Forgot Password on Perealtors', '', 'krishna@prachitours.in', 'error | 106 | The method \"EMS_POST_CAMPAIGN\" is not supported.\n', '', 1, '2024-08-09 16:02:05', NULL, NULL, NULL, 0, NULL, NULL),
+(2, 'User Forgot Password on Perealtors', '', 'krishna@prachitours.in', 'error | 106 | The method \"EMS_POST_CAMPAIGN\" is not supported.\n', '', 1, '2024-08-09 16:06:45', NULL, NULL, NULL, 0, NULL, NULL),
+(3, 'User Forgot Password on Perealtors', '', 'krishna@prachitours.in', 'error | 106 | The method \"EMS_POST_CAMPAIGN\" is not supported.\n', '', 1, '2024-08-09 16:06:48', NULL, NULL, NULL, 0, NULL, NULL),
+(4, 'User Forgot Password on Perealtors', '', 'krishna@prachitours.in', 'error | 106 | The method \"EMS_POST_CAMPAIGN\" is not supported.\n', '', 1, '2024-08-09 16:07:10', NULL, NULL, NULL, 0, NULL, NULL),
+(5, 'User Forgot Password on Perealtors', '', 'krishna@prachitours.in', 'error | 106 | The method \"EMS_POST_CAMPAIGN\" is not supported.\n', '', 1, '2024-08-09 16:07:11', NULL, NULL, NULL, 0, NULL, NULL),
+(6, 'User Forgot Password on Perealtors', '', 'krishna@prachitours.in', 'error | 106 | The method \"EMS_POST_CAMPAIGN\" is not supported.\n', '', 1, '2024-08-09 16:07:21', NULL, NULL, NULL, 0, NULL, NULL),
+(7, 'User Forgot Password on Perealtors', '', 'krishna@prachitours.in', 'error | 106 | The method \"EMS_POST_CAMPAIGN\" is not supported.\n', '', 1, '2024-08-09 16:17:43', NULL, NULL, NULL, 0, NULL, NULL),
+(8, 'User Forgot Password on Perealtors', '', 'krishna@prachitours.in', 'error | 106 | The method \"EMS_POST_CAMPAIGN\" is not supported.\n', '', 1, '2024-08-09 16:19:20', NULL, NULL, NULL, 0, NULL, NULL),
+(9, 'User Forgot Password on Perealtors', '', 'krishna@prachitours.in', 'error | 106 | The method \"EMS_POST_CAMPAIGN\" is not supported.\n', '', 1, '2024-08-12 16:03:37', NULL, NULL, NULL, 0, NULL, NULL),
+(10, 'User Forgot Password on Perealtors', '', 'krishna@prachitours.in', 'error | 106 | The method \"EMS_POST_CAMPAIGN\" is not supported.\n', '', 1, '2024-08-12 16:03:42', NULL, NULL, NULL, 0, NULL, NULL),
+(11, 'User Forgot Password on Perealtors', '', 'krishna@prachitours.in', 'error | 106 | The method \"EMS_POST_CAMPAIGN\" is not supported.\n', '', 1, '2024-08-12 16:03:49', NULL, NULL, NULL, 0, NULL, NULL),
+(12, 'User Forgot Password on Perealtors', '', 'krishna@prachitours.in', 'error | 106 | The method \"EMS_POST_CAMPAIGN\" is not supported.\n', '', 1, '2024-08-12 16:05:12', NULL, NULL, NULL, 0, NULL, NULL),
+(13, 'User Forgot Password on Perealtors', '', 'krishna@prachitours.in', 'error | 106 | The method \"EMS_POST_CAMPAIGN\" is not supported.\n', '', 1, '2024-08-12 16:06:14', NULL, NULL, NULL, 0, NULL, NULL),
+(14, 'User Forgot Password on Perealtors', '', 'krishna@prachitours.in', 'error | 106 | The method \"EMS_POST_CAMPAIGN\" is not supported.\n', '', 1, '2024-08-12 16:08:06', NULL, NULL, NULL, 0, NULL, NULL),
+(15, 'User Forgot Password on Perealtors', '<html>\r\n\r\n	<head>\r\n	<title>\"Forgot Password for your\"</title>\r\n	</head>\r\n	<body style=\"width:100%; font-family:Arial; font-size:13px; line-height:22px; background:#fff;  position:relative;color:#555555; margin:0px; padding:0px;\">\r\n	  	<div style=\"margin:0 auto; width:600px;\">\r\n<div style=\"background-color: #5f9116;; width:594px; float:left; padding:0px 3px 3px 3px; border:#5f9116 3px solid;\" >\r\n	<div style=\"padding:27px; width:540px; border-bottom:#5f9116 3px solid;\">\r\n    	<a href=\"http://localhost/xampp/MARS/ci3_id_name/secureRegions/\" target=\"_blank\" style=\"font-size:13px; color:#839ecd;text-decoration:none; text-align:center;\">\r\n    	<img src=\"http://localhost/xampp/MARS/ci3_id_name/secureRegions//admin/images/email-logo.png\" alt=\"\" /></a>\r\n\r\n    </div>\r\n    <div style=\"background:#fff; padding:44px 34px; width:526px; float:left;\">\r\n    <h1 style=\"color:#d95451; font-size:24px; font-family:Arial; font-weight:normal; margin-bottom:20px;\">Reset Password Link</h1>\r\n    <p style=\"margin-bottom:20px;\">\r\nIf you want to reset your password, click here the following link</p>\r\n <p style=\"margin-bottom:10px;\"><a href=\"http://localhost/xampp/MARS/ci3_id_name/secureRegions/admin_reset_password/VW6V6B52YJ6K\">Reset Password</a></p>\r\n    </div>\r\n</div>\r\n</div>\r\n\r\n	</body>\r\n	</html>\r\n', 'krishna@prachitours.in', 'error | 106 | The method \"EMS_POST_CAMPAIGN\" is not supported.\n', '', 1, '2024-08-12 16:09:39', NULL, NULL, NULL, 0, NULL, NULL),
+(16, 'User Forgot Password on Perealtors', '<html>\r\n\r\n	<head>\r\n	<title>\"Forgot Password for your\"</title>\r\n	</head>\r\n	<body style=\"width:100%; font-family:Arial; font-size:13px; line-height:22px; background:#fff;  position:relative;color:#555555; margin:0px; padding:0px;\">\r\n	  	<div style=\"margin:0 auto; width:600px;\">\r\n<div style=\"background-color: #5f9116;; width:594px; float:left; padding:0px 3px 3px 3px; border:#5f9116 3px solid;\" >\r\n	<div style=\"padding:27px; width:540px; border-bottom:#5f9116 3px solid;\">\r\n    	<a href=\"http://localhost/xampp/MARS/ci3_id_name/secureRegions/\" target=\"_blank\" style=\"font-size:13px; color:#839ecd;text-decoration:none; text-align:center;\">\r\n    	<img src=\"http://localhost/xampp/MARS/ci3_id_name/secureRegions//admin/images/email-logo.png\" alt=\"\" /></a>\r\n\r\n    </div>\r\n    <div style=\"background:#fff; padding:44px 34px; width:526px; float:left;\">\r\n    <h1 style=\"color:#d95451; font-size:24px; font-family:Arial; font-weight:normal; margin-bottom:20px;\">Reset Password Link</h1>\r\n    <p style=\"margin-bottom:20px;\">\r\nIf you want to reset your password, click here the following link</p>\r\n <p style=\"margin-bottom:10px;\"><a href=\"http://localhost/xampp/MARS/ci3_id_name/secureRegions/admin_reset_password/DKABZPZXQ81L\">Reset Password</a></p>\r\n    </div>\r\n</div>\r\n</div>\r\n\r\n	</body>\r\n	</html>\r\n', 'krishna@prachitours.in', 'error | 106 | The method \"EMS_POST_CAMPAIGN\" is not supported.\n', '', 1, '2024-08-12 16:11:43', NULL, NULL, NULL, 0, NULL, NULL),
+(17, 'User Forgot Password on Perealtors', '<html>\r\n\r\n	<head>\r\n	<title>\"Forgot Password for your\"</title>\r\n	</head>\r\n	<body style=\"width:100%; font-family:Arial; font-size:13px; line-height:22px; background:#fff;  position:relative;color:#555555; margin:0px; padding:0px;\">\r\n	  	<div style=\"margin:0 auto; width:600px;\">\r\n<div style=\"background-color: #5f9116;; width:594px; float:left; padding:0px 3px 3px 3px; border:#5f9116 3px solid;\" >\r\n	<div style=\"padding:27px; width:540px; border-bottom:#5f9116 3px solid;\">\r\n    	<a href=\"http://localhost/xampp/MARS/ci3_id_name/secureRegions/\" target=\"_blank\" style=\"font-size:13px; color:#839ecd;text-decoration:none; text-align:center;\">\r\n    	<img src=\"http://localhost/xampp/MARS/ci3_id_name/secureRegions//admin/images/email-logo.png\" alt=\"\" /></a>\r\n\r\n    </div>\r\n    <div style=\"background:#fff; padding:44px 34px; width:526px; float:left;\">\r\n    <h1 style=\"color:#d95451; font-size:24px; font-family:Arial; font-weight:normal; margin-bottom:20px;\">Reset Password Link</h1>\r\n    <p style=\"margin-bottom:20px;\">\r\nIf you want to reset your password, click here the following link</p>\r\n <p style=\"margin-bottom:10px;\"><a href=\"http://localhost/xampp/MARS/ci3_id_name/secureRegions/admin_reset_password/TLJ2KWD3KU9V\">Reset Password</a></p>\r\n    </div>\r\n</div>\r\n</div>\r\n\r\n	</body>\r\n	</html>\r\n', 'krishna@prachitours.in', 'error | 106 | The method \"EMS_POST_CAMPAIGN\" is not supported.\n', '', 1, '2024-08-12 16:12:22', NULL, NULL, NULL, 0, NULL, NULL),
+(18, 'User Forgot Password on Perealtors', '<html>\r\n\r\n	<head>\r\n	<title>\"Forgot Password for your\"</title>\r\n	</head>\r\n	<body style=\"width:100%; font-family:Arial; font-size:13px; line-height:22px; background:#fff;  position:relative;color:#555555; margin:0px; padding:0px;\">\r\n	  	<div style=\"margin:0 auto; width:600px;\">\r\n<div style=\"background-color: #5f9116;; width:594px; float:left; padding:0px 3px 3px 3px; border:#5f9116 3px solid;\" >\r\n	<div style=\"padding:27px; width:540px; border-bottom:#5f9116 3px solid;\">\r\n    	<a href=\"http://localhost/xampp/MARS/ci3_id_name/secureRegions/\" target=\"_blank\" style=\"font-size:13px; color:#839ecd;text-decoration:none; text-align:center;\">\r\n    	<img src=\"http://localhost/xampp/MARS/ci3_id_name/secureRegions//admin/images/email-logo.png\" alt=\"\" /></a>\r\n\r\n    </div>\r\n    <div style=\"background:#fff; padding:44px 34px; width:526px; float:left;\">\r\n    <h1 style=\"color:#d95451; font-size:24px; font-family:Arial; font-weight:normal; margin-bottom:20px;\">Reset Password Link</h1>\r\n    <p style=\"margin-bottom:20px;\">\r\nIf you want to reset your password, click here the following link</p>\r\n <p style=\"margin-bottom:10px;\"><a href=\"http://localhost/xampp/MARS/ci3_id_name/secureRegions/admin_reset_password/1IX9S7MLULZH\">Reset Password</a></p>\r\n    </div>\r\n</div>\r\n</div>\r\n\r\n	</body>\r\n	</html>\r\n', 'krishna@prachitours.in', 'error | 106 | The method \"EMS_POST_CAMPAIGN\" is not supported.\n', '', 1, '2024-08-12 16:21:54', NULL, NULL, NULL, 0, NULL, NULL),
+(19, 'User Forgot Password on Perealtors', '<html>\r\n\r\n	<head>\r\n	<title>\"Forgot Password for your\"</title>\r\n	</head>\r\n	<body style=\"width:100%; font-family:Arial; font-size:13px; line-height:22px; background:#fff;  position:relative;color:#555555; margin:0px; padding:0px;\">\r\n	  	<div style=\"margin:0 auto; width:600px;\">\r\n<div style=\"background-color: #5f9116;; width:594px; float:left; padding:0px 3px 3px 3px; border:#5f9116 3px solid;\" >\r\n	<div style=\"padding:27px; width:540px; border-bottom:#5f9116 3px solid;\">\r\n    	<a href=\"http://localhost/xampp/MARS/ci3_id_name/secureRegions/\" target=\"_blank\" style=\"font-size:13px; color:#839ecd;text-decoration:none; text-align:center;\">\r\n    	<img src=\"http://localhost/xampp/MARS/ci3_id_name/secureRegions//admin/images/email-logo.png\" alt=\"\" /></a>\r\n\r\n    </div>\r\n    <div style=\"background:#fff; padding:44px 34px; width:526px; float:left;\">\r\n    <h1 style=\"color:#d95451; font-size:24px; font-family:Arial; font-weight:normal; margin-bottom:20px;\">Reset Password Link</h1>\r\n    <p style=\"margin-bottom:20px;\">\r\nIf you want to reset your password, click here the following link</p>\r\n <p style=\"margin-bottom:10px;\"><a href=\"http://localhost/xampp/MARS/ci3_id_name/secureRegions/admin_reset_password/JWADF6CXPDWD\">Reset Password</a></p>\r\n    </div>\r\n</div>\r\n</div>\r\n\r\n	</body>\r\n	</html>\r\n', 'krishna@prachitours.in', 'error | 106 | The method \"EMS_POST_CAMPAIGN\" is not supported.\n', '', 1, '2024-08-12 16:25:17', NULL, NULL, NULL, 0, NULL, NULL),
+(20, 'User Forgot Password on Perealtors', '<html>\r\n\r\n	<head>\r\n	<title>\"Forgot Password for your\"</title>\r\n	</head>\r\n	<body style=\"width:100%; font-family:Arial; font-size:13px; line-height:22px; background:#fff;  position:relative;color:#555555; margin:0px; padding:0px;\">\r\n	  	<div style=\"margin:0 auto; width:600px;\">\r\n<div style=\"background-color: #5f9116;; width:594px; float:left; padding:0px 3px 3px 3px; border:#5f9116 3px solid;\" >\r\n	<div style=\"padding:27px; width:540px; border-bottom:#5f9116 3px solid;\">\r\n    	<a href=\"http://localhost/xampp/MARS/ci3_id_name/secureRegions/\" target=\"_blank\" style=\"font-size:13px; color:#839ecd;text-decoration:none; text-align:center;\">\r\n    	<img src=\"http://localhost/xampp/MARS/ci3_id_name/secureRegions//admin/images/email-logo.png\" alt=\"\" /></a>\r\n\r\n    </div>\r\n    <div style=\"background:#fff; padding:44px 34px; width:526px; float:left;\">\r\n    <h1 style=\"color:#d95451; font-size:24px; font-family:Arial; font-weight:normal; margin-bottom:20px;\">Reset Password Link</h1>\r\n    <p style=\"margin-bottom:20px;\">\r\nIf you want to reset your password, click here the following link</p>\r\n <p style=\"margin-bottom:10px;\"><a href=\"http://localhost/xampp/MARS/ci3_id_name/secureRegions/reset_password/A7U1ZM6LR29B\">Reset Password</a></p>\r\n    </div>\r\n</div>\r\n</div>\r\n\r\n	</body>\r\n	</html>\r\n', 'krishna@prachitours.in', 'error | 106 | The method \"EMS_POST_CAMPAIGN\" is not supported.\n', '', 1, '2024-08-12 16:28:06', NULL, NULL, NULL, 0, NULL, NULL),
+(21, 'User Forgot Password on Perealtors', '<html>\r\n\r\n	<head>\r\n	<title>\"Forgot Password for your\"</title>\r\n	</head>\r\n	<body style=\"width:100%; font-family:Arial; font-size:13px; line-height:22px; background:#fff;  position:relative;color:#555555; margin:0px; padding:0px;\">\r\n	  	<div style=\"margin:0 auto; width:600px;\">\r\n<div style=\"background-color: #5f9116;; width:594px; float:left; padding:0px 3px 3px 3px; border:#5f9116 3px solid;\" >\r\n	<div style=\"padding:27px; width:540px; border-bottom:#5f9116 3px solid;\">\r\n    	<a href=\"http://localhost/xampp/MARS/ci3_id_name/secureRegions/\" target=\"_blank\" style=\"font-size:13px; color:#839ecd;text-decoration:none; text-align:center;\">\r\n    	<img src=\"http://localhost/xampp/MARS/ci3_id_name/secureRegions//admin/images/email-logo.png\" alt=\"\" /></a>\r\n\r\n    </div>\r\n    <div style=\"background:#fff; padding:44px 34px; width:526px; float:left;\">\r\n    <h1 style=\"color:#d95451; font-size:24px; font-family:Arial; font-weight:normal; margin-bottom:20px;\">Reset Password Link</h1>\r\n    <p style=\"margin-bottom:20px;\">\r\nIf you want to reset your password, click here the following link</p>\r\n <p style=\"margin-bottom:10px;\"><a href=\"http://localhost/xampp/MARS/ci3_id_name/secureRegions/reset_password/A7U1ZM6LR29B\">Reset Password</a></p>\r\n    </div>\r\n</div>\r\n</div>\r\n\r\n	</body>\r\n	</html>\r\n', 'krishna@prachitours.in', 'error | 106 | The method \"EMS_POST_CAMPAIGN\" is not supported.\n', '', 1, '2024-08-12 16:32:14', NULL, NULL, NULL, 0, NULL, NULL),
+(22, 'User Forgot Password on Perealtors', '<html>\r\n\r\n	<head>\r\n	<title>\"Forgot Password for your\"</title>\r\n	</head>\r\n	<body style=\"width:100%; font-family:Arial; font-size:13px; line-height:22px; background:#fff;  position:relative;color:#555555; margin:0px; padding:0px;\">\r\n	  	<div style=\"margin:0 auto; width:600px;\">\r\n<div style=\"background-color: #5f9116;; width:594px; float:left; padding:0px 3px 3px 3px; border:#5f9116 3px solid;\" >\r\n	<div style=\"padding:27px; width:540px; border-bottom:#5f9116 3px solid;\">\r\n    	<a href=\"http://localhost/xampp/MARS/ci3_id_name/secureRegions/\" target=\"_blank\" style=\"font-size:13px; color:#839ecd;text-decoration:none; text-align:center;\">\r\n    	<img src=\"http://localhost/xampp/MARS/ci3_id_name/secureRegions//admin/images/email-logo.png\" alt=\"\" /></a>\r\n\r\n    </div>\r\n    <div style=\"background:#fff; padding:44px 34px; width:526px; float:left;\">\r\n    <h1 style=\"color:#d95451; font-size:24px; font-family:Arial; font-weight:normal; margin-bottom:20px;\">Reset Password Link</h1>\r\n    <p style=\"margin-bottom:20px;\">\r\nIf you want to reset your password, click here the following link</p>\r\n <p style=\"margin-bottom:10px;\"><a href=\"http://localhost/xampp/MARS/ci3_id_name/secureRegions/Login/reset_password/ZYRXK9JXQ4JI\">Reset Password</a></p>\r\n    </div>\r\n</div>\r\n</div>\r\n\r\n	</body>\r\n	</html>\r\n', 'krishna@prachitours.in', 'error | 106 | The method \"EMS_POST_CAMPAIGN\" is not supported.\n', '', 1, '2024-08-12 16:38:17', NULL, NULL, NULL, 0, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1616,7 +1700,29 @@ INSERT INTO `module_permission` (`id`, `module_id`, `admin_user_role_id`, `view_
 (13, 4, 3, 1, 1, 1, 0, 0, 1, 1, 1, '2024-08-06 10:40:51', NULL, NULL, NULL, '0', NULL, NULL),
 (14, 5, 3, 1, 1, 1, 0, 0, 1, 1, 1, '2024-08-06 10:40:51', NULL, NULL, NULL, '0', NULL, NULL),
 (15, 6, 3, 1, 1, 1, 0, 0, 1, 1, 1, '2024-08-06 10:40:51', NULL, NULL, NULL, '0', NULL, NULL),
-(16, 7, 3, 1, 1, 1, 0, 0, 1, 1, 1, '2024-08-06 10:40:51', NULL, NULL, NULL, '0', NULL, NULL);
+(16, 7, 3, 1, 1, 1, 0, 0, 1, 1, 1, '2024-08-06 10:40:51', NULL, NULL, NULL, '0', NULL, NULL),
+(17, 1, 4, 1, 1, 1, 0, 0, 1, 1, 1, '2024-08-09 10:31:15', NULL, NULL, NULL, '0', NULL, NULL),
+(18, 2, 4, 1, 1, 1, 0, 0, 1, 1, 1, '2024-08-09 10:31:15', NULL, NULL, NULL, '0', NULL, NULL),
+(19, 3, 4, 1, 1, 1, 0, 0, 1, 1, 1, '2024-08-09 10:31:15', NULL, NULL, NULL, '0', NULL, NULL),
+(20, 4, 4, 1, 1, 1, 0, 0, 1, 1, 1, '2024-08-09 10:31:15', NULL, NULL, NULL, '0', NULL, NULL),
+(21, 6, 4, 1, 1, 1, 0, 0, 1, 1, 1, '2024-08-09 10:31:15', NULL, NULL, NULL, '0', NULL, NULL),
+(22, 7, 4, 1, 1, 1, 0, 0, 1, 1, 1, '2024-08-09 10:31:15', NULL, NULL, NULL, '0', NULL, NULL),
+(34, 7, 5, 1, 1, 1, 0, 0, 1, 1, 1, '2024-08-09 10:33:53', NULL, NULL, NULL, '0', NULL, NULL),
+(33, 6, 5, 1, 1, 1, 0, 0, 1, 1, 1, '2024-08-09 10:33:53', NULL, NULL, NULL, '0', NULL, NULL),
+(32, 4, 5, 1, 1, 1, 0, 0, 1, 1, 1, '2024-08-09 10:33:53', NULL, NULL, NULL, '0', NULL, NULL),
+(31, 3, 5, 1, 1, 1, 0, 0, 1, 1, 1, '2024-08-09 10:33:53', NULL, NULL, NULL, '0', NULL, NULL),
+(30, 2, 5, 1, 1, 1, 0, 0, 1, 1, 1, '2024-08-09 10:33:53', NULL, NULL, NULL, '0', NULL, NULL),
+(29, 1, 5, 1, 1, 1, 0, 0, 1, 1, 1, '2024-08-09 10:33:53', NULL, NULL, NULL, '0', NULL, NULL),
+(55, 7, 6, 1, 1, 1, 0, 0, 1, 1, 1, '2024-08-09 10:35:55', NULL, NULL, NULL, '0', NULL, NULL),
+(54, 6, 6, 1, 1, 1, 0, 0, 1, 1, 1, '2024-08-09 10:35:55', NULL, NULL, NULL, '0', NULL, NULL),
+(53, 5, 6, 1, 1, 1, 0, 0, 1, 1, 1, '2024-08-09 10:35:55', NULL, NULL, NULL, '0', NULL, NULL),
+(52, 4, 6, 1, 1, 1, 0, 0, 1, 1, 1, '2024-08-09 10:35:55', NULL, NULL, NULL, '0', NULL, NULL),
+(51, 3, 6, 1, 1, 1, 0, 0, 1, 1, 1, '2024-08-09 10:35:55', NULL, NULL, NULL, '0', NULL, NULL),
+(50, 2, 6, 1, 1, 1, 0, 0, 1, 1, 1, '2024-08-09 10:35:55', NULL, NULL, NULL, '0', NULL, NULL),
+(49, 1, 6, 1, 1, 1, 0, 0, 1, 1, 1, '2024-08-09 10:35:55', NULL, NULL, NULL, '0', NULL, NULL),
+(56, 2, 7, 1, 1, 1, 0, 0, 1, 1, 1, '2024-08-09 10:42:34', NULL, NULL, NULL, '0', NULL, NULL),
+(57, 3, 7, 1, 1, 1, 0, 0, 1, 1, 1, '2024-08-09 10:42:34', NULL, NULL, NULL, '0', NULL, NULL),
+(58, 4, 7, 1, 1, 1, 0, 0, 1, 1, 1, '2024-08-09 10:42:34', NULL, NULL, NULL, '0', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1733,6 +1839,12 @@ ALTER TABLE `designation`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `email_log`
+--
+ALTER TABLE `email_log`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `join_au_cp_aur`
 --
 ALTER TABLE `join_au_cp_aur`
@@ -1764,25 +1876,25 @@ ALTER TABLE `state`
 -- AUTO_INCREMENT for table `admin_user`
 --
 ALTER TABLE `admin_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `admin_user_file`
 --
 ALTER TABLE `admin_user_file`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `admin_user_role`
 --
 ALTER TABLE `admin_user_role`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `au_pwd_reset_token`
 --
 ALTER TABLE `au_pwd_reset_token`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `city`
@@ -1809,6 +1921,12 @@ ALTER TABLE `designation`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT for table `email_log`
+--
+ALTER TABLE `email_log`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
+--
 -- AUTO_INCREMENT for table `join_au_cp_aur`
 --
 ALTER TABLE `join_au_cp_aur`
@@ -1824,7 +1942,7 @@ ALTER TABLE `module`
 -- AUTO_INCREMENT for table `module_permission`
 --
 ALTER TABLE `module_permission`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
 -- AUTO_INCREMENT for table `state`
